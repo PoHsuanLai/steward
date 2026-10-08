@@ -3,7 +3,7 @@
 //! running a program. The cassette is the docket acceptance's flow (a): the policy writer's draft
 //! and the planner's four steps.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::rig::{Plan, World};
 use inferd::replay::cassette::Cassette;

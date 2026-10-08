@@ -7,7 +7,7 @@
 //! `org.quire.Mail` runs on the probed Ollama, and with the Ollama stopped it is `Unavailable`
 //! and no cloud call is made.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::accountd::{FakeAccount, Standing};
 use hosting::engine::{Chat, Script};
@@ -127,6 +127,19 @@ fn port_of(fake: &ModelsHandle) -> u16 {
         .expect("port")
         .parse()
         .expect("number")
+}
+
+/// A loopback port that nothing answers on and nothing else can take: a socket bound to it and
+/// not listening, so a connect is refused. A fake that comes up on the port later can bind it,
+/// since both set `SO_REUSEADDR` and this one does not listen. Hold the socket for the test.
+fn reserved_port() -> (tokio::net::TcpSocket, u16) {
+    let socket = tokio::net::TcpSocket::new_v4().expect("socket");
+    socket.set_reuseaddr(true).expect("reuse the address");
+    socket
+        .bind(std::net::SocketAddr::from(([127, 0, 0, 1], 0)))
+        .expect("bind an ephemeral port");
+    let port = socket.local_addr().expect("local address").port();
+    (socket, port)
 }
 
 /// Stops a fake and gives its listener the moment it needs to close.
@@ -255,9 +268,7 @@ async fn acceptance_6_with_local_only_on_a_mail_summary_runs_on_the_probed_ollam
 async fn the_cloud_reach_of_acceptance_6_is_live_and_only_local_only_keeps_it_out() {
     // The control of the test above: the same world with `ai.local_only` off and the Ollama
     // stopped is answered by the hosted account, so the zero calls above are the setting's doing.
-    let closed = fake_ollama(&Bind::Loopback).await;
-    let port = port_of(&closed);
-    stop(closed).await;
+    let (_reserved, port) = reserved_port();
     let world = world(port, LocalOnly::Off).await;
     rescan(&world).await;
     let events = turn(&world, "Summarise: the meeting moved to noon.").await;
@@ -285,9 +296,7 @@ async fn the_cloud_reach_of_acceptance_6_is_live_and_only_local_only_keeps_it_ou
 #[tokio::test(flavor = "multi_thread")]
 async fn a_runtime_that_starts_later_is_found_on_rescan_and_listed_for_the_picker_and_goes_offline_and_back()
  {
-    let first = fake_ollama(&Bind::Loopback).await;
-    let port = port_of(&first);
-    stop(first).await;
+    let (_reserved, port) = reserved_port();
     let world = world(port, LocalOnly::On).await;
     rescan(&world).await;
     assert!(world.served.listed().is_empty(), "nothing runs yet");
@@ -324,9 +333,7 @@ async fn a_runtime_that_starts_later_is_found_on_rescan_and_listed_for_the_picke
 #[tokio::test(flavor = "multi_thread")]
 async fn rescan_tells_listeners_the_engines_changed_when_a_runtime_came_up() {
     use zbus::export::futures_core::Stream;
-    let first = fake_ollama(&Bind::Loopback).await;
-    let port = port_of(&first);
-    stop(first).await;
+    let (_reserved, port) = reserved_port();
     let world = world(port, LocalOnly::On).await;
     let proxy = InferenceProxy::new(&world.client).await.expect("proxy");
     let mut changed = proxy

@@ -3,7 +3,7 @@
 //! the host, and a transport that has no inferd says so.
 #![cfg(all(feature = "dbus", feature = "infer"))]
 
-mod common;
+use crate::common;
 
 use common::bus::PrivateBus;
 use common::inferd::{Behaviour, FakeInferd, Seen, slugs};

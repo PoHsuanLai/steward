@@ -4,7 +4,7 @@
 //! over the bus exactly as inferd will send it.
 #![cfg(all(feature = "dbus", feature = "infer"))]
 
-mod common;
+use crate::common;
 
 use common::bus::PrivateBus;
 use common::inferd::{Behaviour, FakeInferd, Served};

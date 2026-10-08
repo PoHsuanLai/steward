@@ -4,7 +4,7 @@
 //! "runs" in place of the `speech-host` binary. No real binary, model, library, microphone or
 //! network is touched.
 
-mod hosting;
+use crate::hosting;
 
 use engine_supervisor::{EngineId, SupervisorConfig};
 use hosting::engine::{Chat, Script};

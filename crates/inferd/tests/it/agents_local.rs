@@ -2,7 +2,7 @@
 //! engine, an attached one), end to end on a private bus: the translation of Anthropic and OpenAI
 //! requests to the engine's chat and back, with no key and no spend.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::agent::*;
 use hosting::engine::Chat;

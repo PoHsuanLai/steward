@@ -3,7 +3,7 @@
 //! events on the wire in order, engines wanted and released, turns dropped, queued requests
 //! started with their own descriptors, and a broken wire ending the session.
 
-mod support;
+use crate::support;
 
 use inferd::serve::{Carried, Seams, TurnStep, serve_session};
 use inferd::session::SessionSpec;

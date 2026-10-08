@@ -4,7 +4,7 @@
 //! fake speech host and the text model's fake engine are the real ones; no real binary, model,
 //! library, microphone or network is touched.
 
-mod hosting;
+use crate::hosting;
 
 use engine_supervisor::SupervisorConfig;
 use hosting::engine::{Chat, Script};

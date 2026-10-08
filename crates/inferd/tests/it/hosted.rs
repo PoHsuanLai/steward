@@ -3,7 +3,7 @@
 //! supervisor driver, runner and audit sink. Nothing here starts an engine or touches the GPU,
 //! the real bus or the user's files.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::engine::{Chat, Script};
 use hosting::entries;

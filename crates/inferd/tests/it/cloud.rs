@@ -4,7 +4,7 @@
 //! Acceptance 7 of design/31 section 7.1: no key is on any bus, in any file or in any audit line,
 //! checked by a scan that has a positive control.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::accountd::{FakeAccount, Standing};
 use hosting::engine::{Chat, Script};

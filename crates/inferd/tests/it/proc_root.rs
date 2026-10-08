@@ -2,8 +2,7 @@
 //! fake `/proc` with `<dir>/<pid>/cgroup` for this test process. Only a `test-proc-root` build
 //! honours the variable; any other build ignores it and says so.
 
-#[path = "hosting/bus.rs"]
-mod bus;
+use crate::hosting::bus;
 
 use porter_core::Need;
 use porter_core::need::LlmNeed;

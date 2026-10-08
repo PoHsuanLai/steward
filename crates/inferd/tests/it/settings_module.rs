@@ -2,7 +2,7 @@
 //! `/org/quire/Inference1/settings`. Describe, Get and Set by the Settings role; everyone else is
 //! `NotPermitted`; a Set reaches the file and the next route; `Rescan` reads the file again.
 
-mod hosting;
+use crate::hosting;
 
 use ds_settings::live::{LiveClient, LiveError, LiveSchema};
 use ds_settings::schema::{AgentSetting, ChoiceWord, KeyKind, KeyPath, Page};

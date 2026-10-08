@@ -4,7 +4,7 @@
 //! listener. The provider is the fake from `hosting` (TLS on loopback, the scratch CA), accountd is
 //! the fake one. The routes to a model on this computer are in `agents_local.rs`.
 
-mod hosting;
+use crate::hosting;
 
 use hosting::accountd::{FakeAccount, Standing};
 use hosting::agent::*;

@@ -3,7 +3,7 @@
 //! ways, memfds ride as SCM_RIGHTS, and every way the daemon can fail shows as an error.
 #![cfg(all(feature = "dbus", feature = "infer"))]
 
-mod common;
+use crate::common;
 
 use common::bus::PrivateBus;
 use common::inferd::{Behaviour, FakeInferd, Seen, slugs};
