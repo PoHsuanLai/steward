@@ -16,7 +16,7 @@ porter-ids = { workspace = true }
 porter-wire = { workspace = true }
 # The shared helpers: `Details`, `Call`, `Document`, `Unserved`, the vardict codec.
 porter-dbus = { workspace = true }
-# `#[bus_interface]`; its expansion names `crate::Call` and `crate::Unserved` (see lib.rs).
+# `#[bus_interface]`; its expansion names `::porter_dbus::Call` and `::porter_dbus::Unserved`.
 porter-dbus-macros = { workspace = true }
 zbus = { workspace = true }
 serde = { workspace = true }

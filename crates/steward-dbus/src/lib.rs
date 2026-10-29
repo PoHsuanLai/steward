@@ -6,7 +6,3 @@
 mod json_value;
 
 pub mod inference;
-
-// `#[bus_interface]` expands to `crate::Call` and `crate::Unserved`; these private uses are
-// where they resolve.
-use porter_dbus::{Call, Unserved};
