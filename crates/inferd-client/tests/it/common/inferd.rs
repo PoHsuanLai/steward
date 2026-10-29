@@ -6,7 +6,6 @@
 use porter_capability::Tier;
 use porter_core::DataClass;
 use porter_dbus::Details;
-use porter_dbus::inference::{NeedArg, need_from_dbus};
 use porter_infer::testing::{FakeInferSession, Script};
 use porter_infer::{ClientFrame, InferEvent, InferRefusal, InferReply, InferSession};
 use porter_match::Need;
@@ -16,6 +15,7 @@ use std::io::IoSliceMut;
 use std::mem::MaybeUninit;
 use std::os::unix::net::UnixStream as StdStream;
 use std::sync::{Arc, Mutex};
+use steward_dbus::inference::{NeedArg, need_from_dbus};
 use tokio::io::{AsyncWriteExt, Interest};
 use tokio::net::UnixStream;
 use zbus::fdo;
@@ -100,11 +100,11 @@ impl FakeInferd {
     pub async fn serve(self, connection: &zbus::Connection) {
         connection
             .object_server()
-            .at(porter_dbus::inference::INFERENCE_PATH, self)
+            .at(steward_dbus::inference::INFERENCE_PATH, self)
             .await
             .expect("serve the object");
         connection
-            .request_name(porter_dbus::inference::INFERENCE_BUS)
+            .request_name(steward_dbus::inference::INFERENCE_BUS)
             .await
             .expect("own the name");
     }
@@ -129,8 +129,8 @@ impl FakeInferd {
             need,
             class,
             tier,
-            traceparent: text(porter_dbus::inference::OPTION_TRACEPARENT),
-            usage: text(porter_dbus::inference::OPTION_USAGE),
+            traceparent: text(steward_dbus::inference::OPTION_TRACEPARENT),
+            usage: text(steward_dbus::inference::OPTION_USAGE),
         });
         Ok(self.prepare.lock().expect("lock").clone())
     }
@@ -150,10 +150,10 @@ impl FakeInferd {
             usage: porter_core::consent::Usage::Interactive,
         };
         let traceparent = options
-            .get(porter_dbus::inference::OPTION_TRACEPARENT)
+            .get(steward_dbus::inference::OPTION_TRACEPARENT)
             .and_then(|v| String::try_from(v.try_clone().ok()?).ok());
         let usage = options
-            .get(porter_dbus::inference::OPTION_USAGE)
+            .get(steward_dbus::inference::OPTION_USAGE)
             .and_then(|v| String::try_from(v.try_clone().ok()?).ok());
         self.seen.lock().expect("lock").opens.push(Opened {
             need,

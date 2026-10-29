@@ -10,10 +10,10 @@ use inferd::peers::Role;
 use inferd::settings::AgentEndpoint;
 use porter_core::{AppId, AppName, Isolation};
 use porter_dbus::Details;
-use porter_dbus::inference::{AgentsProxy, EndpointArg};
 use porter_infer::{LocalOnly, Period, Policy, SpendScope};
 use serde_json::{Value, json};
 use std::path::Path;
+use steward_dbus::inference::{AgentsProxy, EndpointArg};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
 

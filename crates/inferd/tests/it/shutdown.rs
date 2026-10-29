@@ -15,11 +15,11 @@ use engine_supervisor::{EngineHost, EngineId, GpuAccess, Network, Sandbox, UnitS
 use inferd::hosts::ProcessHost;
 use inferd::shutdown::{Ended, Signals, on_signal};
 use model_catalog::{EngineArg, MiB};
-use porter_dbus::inference::INFERENCE_BUS;
 use rustix::process::{Pid, Signal, kill_process};
 use std::path::{Path, PathBuf};
 use std::process::{Child, Command, Stdio};
 use std::time::{Duration, Instant};
+use steward_dbus::inference::INFERENCE_BUS;
 use test_kit::Scratch;
 
 /// The stand-in's exit codes by how its shutdown ended.

@@ -7,9 +7,9 @@
 use crate::hosting;
 
 use hosting::rig::{Plan, World};
-use porter_dbus::inference::InferenceProxy;
 use porter_fake_servers::HeldRuntime;
 use std::time::Duration;
+use steward_dbus::inference::InferenceProxy;
 
 /// How long the start may show it is waiting for the held runtime, and how long a call has to
 /// leave before the runtime runs (see `HeldRuntime`). The start here includes making the world

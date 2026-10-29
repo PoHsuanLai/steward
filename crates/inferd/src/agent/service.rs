@@ -7,9 +7,9 @@ use super::open::OpenRequest;
 use super::refusal::{Cause, Refusal};
 use super::session::Agents;
 use crate::peers::{Peers, Role};
-use porter_dbus::inference::{AgentsServer, EndpointArg, RouteArg};
 use porter_dbus::{Call, Details};
 use std::sync::Arc;
+use steward_dbus::inference::{AgentsServer, EndpointArg, RouteArg};
 use zbus::message::Header;
 
 /// The bus object.

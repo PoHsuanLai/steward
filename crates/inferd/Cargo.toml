@@ -1,6 +1,6 @@
 [package]
 name = "inferd"
-description = "porter's AI broker daemon: serves org.quire.Inference1 over porter-infer, with the router, the engine host, the model turns and the audit trail behind the session server's four seams."
+description = "steward's AI broker daemon: serves org.quire.Inference1 over porter-infer, with the router, the engine host, the model turns and the audit trail behind the session server's four seams."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -31,7 +31,8 @@ porter-client = { workspace = true }
 porter-client-dbus = { workspace = true }
 porter-settings = { workspace = true }
 porter-store = { workspace = true }
-porter-discover = { workspace = true }
+inferd-probe = { workspace = true }
+steward-dbus = { workspace = true }
 porter-http = { workspace = true }
 porter-http-reqwest = { workspace = true }
 porter-provider = { workspace = true }

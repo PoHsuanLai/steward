@@ -1,0 +1,31 @@
+[package]
+name = "steward-dbus"
+description = "steward's D-Bus API: org.quire.Inference1 (inference and agents) written once, as the zbus proxy its callers use, the trait inferd implements and the object that serves it, with the bus vocabulary and row codecs."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+porter-core = { workspace = true }
+porter-match = { workspace = true }
+porter-ids = { workspace = true }
+# The names of the bus (`porter_wire::names`), shared with the clients that dial it.
+porter-wire = { workspace = true }
+# The shared helpers: `Details`, `Call`, `Document`, `Unserved`, the vardict codec.
+porter-dbus = { workspace = true }
+# `#[bus_interface]`; its expansion names `crate::Call` and `crate::Unserved` (see lib.rs).
+porter-dbus-macros = { workspace = true }
+zbus = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+porter-capability = { workspace = true }
+test-kit = { workspace = true }
+
+[lints]
+workspace = true

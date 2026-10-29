@@ -8,8 +8,8 @@ use porter_capability::AgentProgram;
 use porter_capability::Locality;
 use porter_core::AccountId;
 use porter_core::{AppId, AppName, DataClass, Isolation};
-use porter_dbus::inference::{MODELS_ANY, MODELS_LISTED, ROUTE_ACCOUNT, ROUTE_MODEL, RouteArg};
 use porter_infer::LocalOnly;
+use steward_dbus::inference::{MODELS_ANY, MODELS_LISTED, ROUTE_ACCOUNT, ROUTE_MODEL, RouteArg};
 
 /// What the route is.
 #[derive(Debug, Clone, PartialEq, Eq)]

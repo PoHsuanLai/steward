@@ -18,7 +18,6 @@ use porter_capability::LlmFeature;
 use porter_capability::Tier;
 use porter_core::consent::Usage;
 use porter_core::{AppId, AppName, DataClass, Isolation};
-use porter_dbus::inference::InferenceProxy;
 use porter_ids::{Tokens, TurnCount};
 use porter_infer::{
     ChargeTotal, ChatMessage, ChatRequest, ClientFrame, InferEvent, InferRefusal, InferReply,
@@ -29,6 +28,7 @@ use porter_match::LlmNeed;
 use porter_match::Need;
 use rust_decimal::Decimal;
 use std::path::Path;
+use steward_dbus::inference::InferenceProxy;
 
 /// OpenRouter's key, and OpenAI's: distinctive, so a scan for either cannot match by accident.
 const KEY_OR: &str = "sk-or-v1-S3CRET-CLOUD-KEY-0123456789";
@@ -801,7 +801,7 @@ async fn usage_over_the_bus_says_what_the_caller_spent_and_what_it_may() {
     world_plan.spend = capped(5);
     let world = World::start(world_plan).await;
     turn(&world, "x").await;
-    let usage = porter_dbus::inference::InferenceProxy::new(&world.client)
+    let usage = steward_dbus::inference::InferenceProxy::new(&world.client)
         .await
         .expect("proxy")
         .usage()
@@ -829,11 +829,11 @@ async fn usage_over_the_bus_says_what_the_caller_spent_and_what_it_may() {
 async fn availability_says_granted_for_an_app_with_a_grant_and_needs_consent_for_one_without() {
     for (who, want) in [(COMPANION, "granted"), (READER, "available_needs_consent")] {
         let world = World::start(plan(vec![openrouter(&[COMPANION])], who)).await;
-        let got = porter_dbus::inference::InferenceProxy::new(&world.client)
+        let got = steward_dbus::inference::InferenceProxy::new(&world.client)
             .await
             .expect("proxy")
             .availability(
-                &porter_dbus::inference::need_to_dbus(&llm()),
+                &steward_dbus::inference::need_to_dbus(&llm()),
                 "prompt",
                 &porter_dbus::Details::new(),
             )
@@ -885,8 +885,8 @@ async fn the_picker_lists_every_hosted_model_by_company_and_marks_the_ones_no_ac
         );
         let live = LiveClient::new(
             &settings,
-            porter_dbus::inference::INFERENCE_BUS,
-            porter_dbus::inference::INFERENCE_SETTINGS_PATH,
+            steward_dbus::inference::INFERENCE_BUS,
+            steward_dbus::inference::INFERENCE_SETTINGS_PATH,
             AnyOwner,
         )
         .expect("client");

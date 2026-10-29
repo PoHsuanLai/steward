@@ -15,9 +15,6 @@ use inferd::settings::{ConfigFile, Reload};
 use inferd::supervise::Supervised;
 use model_catalog::EngineKind;
 use porter_core::{AppId, AppName, Isolation};
-use porter_dbus::inference::{
-    EnginePlace, EngineState, InferenceProxy, LocalEngine, local_engine_from_dbus,
-};
 use porter_ids::UnixSeconds;
 use porter_ids::clock::FixedClock;
 use porter_infer::{Policy, TierMap};
@@ -25,6 +22,9 @@ use porter_turns::audit::Memory;
 use std::os::unix::fs::PermissionsExt;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
+use steward_dbus::inference::{
+    EnginePlace, EngineState, InferenceProxy, LocalEngine, local_engine_from_dbus,
+};
 
 fn who(role: Role) -> Caller {
     Caller {

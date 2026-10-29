@@ -1,6 +1,6 @@
 //! The names a runtime serves its models under, and which probe claim each belongs to.
 //!
-//! `porter_discover` reads a model as a claim under an id (`llama3.2:3b` is `llama3.2-3b`: lower
+//! `inferd_probe` reads a model as a claim under an id (`llama3.2:3b` is `llama3.2-3b`: lower
 //! case, anything outside `[a-z0-9._-]` a `-`, at most 64 bytes); a request must carry the
 //! runtime's own name. The list is read again (`/api/tags` for Ollama, `/v1/models` for the
 //! rest) and a name is paired with the claims of the id it makes. A llama.cpp server names its
@@ -66,7 +66,7 @@ impl Listing {
     }
 }
 
-/// A runtime's model name as an id: the rule `porter_discover`'s probe applies.
+/// A runtime's model name as an id: the rule `inferd_probe`'s probe applies.
 pub fn id_of(name: &str) -> Option<ModelId> {
     let slug: String = name
         .to_ascii_lowercase()

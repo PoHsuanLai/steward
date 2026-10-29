@@ -4,8 +4,8 @@
 
 use crate::peers::Caller;
 use porter_dbus::Details;
-use porter_dbus::inference::{OPTION_ASKER, OPTION_MODEL};
 use porter_infer::{Asker, ModelRef};
+use steward_dbus::inference::{OPTION_ASKER, OPTION_MODEL};
 use zbus::fdo;
 
 /// What a session is on its own account.

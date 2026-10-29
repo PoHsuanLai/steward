@@ -8,9 +8,9 @@ use crate::hosting::bus::{self, PrivateBus};
 use inferd::config::{Dirs, ProgramSearch};
 use inferd::{Config, Daemon};
 use porter_dbus::BusTarget;
-use porter_dbus::inference::INFERENCE_BUS;
 use std::path::Path;
 use std::time::Duration;
+use steward_dbus::inference::INFERENCE_BUS;
 use test_kit::Deadline;
 
 /// The probe table names no port: this daemon must not ask a port of this computer what it is

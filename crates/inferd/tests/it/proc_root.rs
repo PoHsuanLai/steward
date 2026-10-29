@@ -5,12 +5,12 @@
 use crate::hosting::bus;
 
 use porter_dbus::Details;
-use porter_dbus::inference::INFERENCE_BUS;
-use porter_dbus::inference::{InferenceProxy, need_to_dbus};
 use porter_match::LlmNeed;
 use porter_match::Need;
 use std::path::{Path, PathBuf};
 use std::process::{Child, Command, Stdio};
+use steward_dbus::inference::INFERENCE_BUS;
+use steward_dbus::inference::{InferenceProxy, need_to_dbus};
 
 /// The probe table names no port: this daemon must not ask a port of this computer what it is
 /// (a real Ollama may be on one).

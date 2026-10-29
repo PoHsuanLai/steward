@@ -31,7 +31,6 @@ use porter_callers::{ProcRoot, choose_proc_root, proc_notice};
 use porter_client::Porter;
 use porter_client_dbus::Bus;
 use porter_dbus::BusTarget;
-use porter_dbus::inference::INFERENCE_BUS;
 use porter_http_reqwest::{Limits, ReqwestHttp};
 use porter_ids::{clock::Clock, clock::SystemClock};
 use porter_router::catalog::read_catalog;
@@ -43,6 +42,7 @@ use std::os::unix::fs::DirBuilderExt;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 use std::time::Duration;
+use steward_dbus::inference::INFERENCE_BUS;
 use zbus::Connection;
 
 /// How often the daemon looks at its file for a change by someone else.

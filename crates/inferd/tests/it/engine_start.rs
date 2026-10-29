@@ -15,7 +15,6 @@ use porter_capability::Tier;
 use porter_core::DataClass;
 use porter_core::consent::Usage;
 use porter_dbus::Details;
-use porter_dbus::inference::{InferenceProxy, need_to_dbus};
 use porter_ids::Tokens;
 use porter_infer::{
     ChatMessage, ChatRequest, ClientFrame, InferEvent, InferReply, InferRequest, MessagePart,
@@ -29,6 +28,7 @@ use std::os::unix::fs::PermissionsExt;
 use std::os::unix::net::UnixListener;
 use std::path::{Path, PathBuf};
 use std::time::{Duration, Instant};
+use steward_dbus::inference::{InferenceProxy, need_to_dbus};
 use test_kit::Scratch;
 
 /// What "at once" means for a failure the daemon already knows (an exit, a taken socket path, a

@@ -11,10 +11,10 @@
 //! second field.
 
 use crate::attached::ComputerError;
-use porter_dbus::inference::COMPUTER_ERROR_PREFIX;
-use porter_dbus::inference::PLACE_ERROR_PREFIX;
 use porter_ids::Bytes;
 use porter_infer::{HardwareNote, NoPlaceReason, PlaceRefusal};
+use steward_dbus::inference::COMPUTER_ERROR_PREFIX;
+use steward_dbus::inference::PLACE_ERROR_PREFIX;
 use zbus::DBusError;
 use zbus::fdo;
 use zbus::message::{Header, Message};

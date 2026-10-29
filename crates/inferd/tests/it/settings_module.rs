@@ -19,14 +19,14 @@ use porter_capability::{Billing, Locality};
 use porter_capability::{Capability, LlmCap, LlmFeature, LlmWire};
 use porter_core::AccountId;
 use porter_core::{AppId, AppName, Isolation};
-use porter_dbus::inference::InferenceProxy;
-use porter_dbus::inference::{INFERENCE_BUS, INFERENCE_PATH, INFERENCE_SETTINGS_PATH};
 use porter_ids::clock::FixedClock;
 use porter_ids::{Tokens, UnixSeconds};
 use porter_infer::{Pick, Policy, Slot, TierMap};
 use porter_turns::audit::Memory;
 use std::path::PathBuf;
 use std::sync::Arc;
+use steward_dbus::inference::InferenceProxy;
+use steward_dbus::inference::{INFERENCE_BUS, INFERENCE_PATH, INFERENCE_SETTINGS_PATH};
 use zbus::Connection;
 use zbus::export::futures_core::Stream;
 

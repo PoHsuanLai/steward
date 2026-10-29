@@ -1,6 +1,6 @@
 [package]
 name = "inferd-client"
-description = "The app's client of inferd: inference sessions, warm-ups, places, the person's other computers and the models inferd runs, over D-Bus or hosted in the app. Sits in porter until the steward lane takes it."
+description = "The app's client of inferd: inference sessions, warm-ups, places, the person's other computers and the models inferd runs, over D-Bus or hosted in the app."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -26,6 +26,7 @@ model-provider = { workspace = true, optional = true }
 model-wire = { workspace = true, optional = true }
 porter-callers = { workspace = true, optional = true }
 porter-dbus = { workspace = true, optional = true }
+steward-dbus = { workspace = true, optional = true }
 porter-fs = { workspace = true, optional = true }
 rustix = { workspace = true, optional = true }
 serde = { workspace = true, optional = true }
@@ -42,6 +43,7 @@ porter-fake-servers = { workspace = true }
 # The scripted inference session the session tests play (`porter_infer::testing`).
 porter-infer = { workspace = true, features = ["testing"] }
 porter-dbus = { workspace = true }
+steward-dbus = { workspace = true }
 rustix = { workspace = true }
 tokio = { workspace = true }
 zbus = { workspace = true }
@@ -72,7 +74,7 @@ engines = [
 lending = ["dep:porter-fs"]
 # The D-Bus transport (Linux, the desktop's inferd). It reads the session `Open` returns as
 # frames over a Unix stream socket with descriptors riding on them, so it pulls in the runtime.
-dbus = ["dep:rustix", "dep:serde", "dep:tokio", "dep:porter-callers", "dep:porter-dbus", "dep:serde_json", "dep:zbus"]
+dbus = ["dep:rustix", "dep:serde", "dep:tokio", "dep:porter-callers", "dep:porter-dbus", "dep:steward-dbus", "dep:serde_json", "dep:zbus"]
 
 [lints]
 workspace = true

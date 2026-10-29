@@ -1,4 +1,4 @@
-//! Structured replies: validate and repair (ARCHITECTURE section 7, stoker interface ask 100).
+//! Structured replies: validate and repair (ARCHITECTURE section 2, stoker interface ask 100).
 //!
 //! `ReplyShape::Json(schema)` and `ReplyShape::Choice` are read as stoker's `Shape` and run under
 //! a `ShapedSession` around the turn, so the reply an app gets has passed `Shape::check`, or the

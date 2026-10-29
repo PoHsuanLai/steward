@@ -4,9 +4,10 @@
 //! A need is its kind's slug plus a vardict whose entries are the need's fields by name, each
 //! field in its serde form (`json_value` is the one conversion).
 
-use crate::Details;
-use crate::json_value::{bad, from_vardict, into_object, into_string, to_vardict};
+use crate::json_value::{bad, into_object, into_string};
 use porter_core::CoreError;
+use porter_dbus::Details;
+use porter_dbus::{from_vardict, to_vardict};
 use porter_match::Need;
 use serde_json::{Map, Value as Json};
 

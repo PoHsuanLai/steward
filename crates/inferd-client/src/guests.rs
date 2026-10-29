@@ -21,14 +21,14 @@
 
 use crate::error::TransportError;
 use crate::transport::bus_error;
-use porter_dbus::inference::{GUEST_KEY_NAME, GUEST_KEY_SINCE};
-use porter_dbus::inference::{GuestAsksStream, GuestsChangedStream, InferenceProxy};
 use porter_dbus::{BusConnection, BusStream, Details};
 use porter_ids::UnixSeconds;
 use porter_tailnet::GuestAsk;
 use porter_tailscale::NodeId;
 use std::pin::Pin;
 use std::task::{Context, Poll};
+use steward_dbus::inference::{GUEST_KEY_NAME, GUEST_KEY_SINCE};
+use steward_dbus::inference::{GuestAsksStream, GuestsChangedStream, InferenceProxy};
 
 /// One thing heard about the computers that ask. More may be added: match with a wildcard.
 #[derive(Debug, Clone, PartialEq, Eq)]

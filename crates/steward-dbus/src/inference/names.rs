@@ -1,10 +1,8 @@
 //! inferd's bus name and object, the option and result keys its methods take and give, and the
 //! error-name prefixes its refusals use.
 
-/// inferd's bus name.
-pub const INFERENCE_BUS: &str = "org.quire.Inference1";
-/// inferd's object.
-pub const INFERENCE_PATH: &str = "/org/quire/Inference1";
+// inferd's bus name and object live with porter's other bus names.
+pub use porter_wire::names::{INFERENCE_BUS, INFERENCE_PATH};
 /// inferd's settings module (`org.quire.SettingsModule1`, declared in design/22 §9.4, not
 /// here): the picker rows per kind and the `ai.model.<kind>.<tier>` map.
 pub const INFERENCE_SETTINGS_PATH: &str = "/org/quire/Inference1/settings";

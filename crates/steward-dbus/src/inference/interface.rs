@@ -4,7 +4,7 @@
 //! computer-use steps use the same fd, so this interface has no member for them.
 
 use super::codec::NeedArg;
-use crate::Details;
+use porter_dbus::Details;
 use porter_dbus_macros::bus_interface;
 use zbus::zvariant::OwnedFd;
 

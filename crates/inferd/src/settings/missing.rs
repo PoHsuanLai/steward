@@ -3,9 +3,9 @@
 
 use engine_spec::engine;
 use model_catalog::EngineKind;
-use porter_dbus::inference::EngineState;
 use porter_infer::Slot;
 use porter_router::local::EngineConfig;
+use steward_dbus::inference::EngineState;
 
 /// What the person calls the engine of `kind` in the picker (copy text, so it is not the engine
 /// spec's: the spec holds no words a person reads).

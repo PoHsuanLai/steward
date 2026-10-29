@@ -3,7 +3,7 @@
 //! A chat, task or embedding turn is one path wherever the model is: a `porter_infer::Model`
 //! (`porter_turns::local::LocalTurn` on a model of this computer, stoker's `OpenAiCompat` against
 //! the pinned model's engine wrapped in `Retrying`; `cloud::turn::CloudModel` on a hosted one),
-//! run by `porter_infer::answer`. inferd owns retry (ARCHITECTURE section 7). What stays here is
+//! run by `porter_infer::answer`. inferd owns retry (ARCHITECTURE section 2). What stays here is
 //! the daemon's half: what a session is pinned to, where a local request is seated and tried
 //! again, and a speech turn.
 //!

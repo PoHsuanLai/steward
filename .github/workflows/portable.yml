@@ -1,0 +1,28 @@
+name: portable
+
+# The crates that must build on macOS and Windows: the pure ones, which an app on those systems
+# links through inferd-client without the bus (check-portable.sh lists the same cores for Linux).
+on:
+  push:
+  pull_request:
+
+jobs:
+  portable:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      # porter, stoker and quire are private git dependencies; the token is the repository secret
+      # DEPS_TOKEN (read access to those repositories). See ci.yml.
+      - name: private dependencies
+        shell: bash
+        env:
+          DEPS_TOKEN: ${{ secrets.DEPS_TOKEN }}
+        run: git config --global url."https://x-access-token:${DEPS_TOKEN}@github.com/".insteadOf "https://github.com/"
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: check
+        run: cargo check -p porter-infer -p porter-bridge -p porter-tailnet -p inferd-probe -p inferd-client --no-default-features

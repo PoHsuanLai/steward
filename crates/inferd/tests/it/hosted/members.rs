@@ -6,11 +6,11 @@ use inferd::engines::Engines;
 use inferd::peers::TablePeers;
 use inferd::service::Inference;
 use porter_dbus::Details;
-use porter_dbus::inference::{InferenceProxy, InferenceServed, need_to_dbus};
 use porter_ids::UnixSeconds;
 use porter_ids::clock::FixedClock;
 use porter_infer::{InferRefusal, ModelError, Readiness};
 use porter_turns::audit::Discard;
+use steward_dbus::inference::{InferenceProxy, InferenceServed, need_to_dbus};
 use zbus::object_server::Interface;
 
 async fn proxy(world: &World) -> InferenceProxy<'_> {

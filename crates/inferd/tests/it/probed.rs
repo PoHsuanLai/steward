@@ -20,7 +20,6 @@ use porter_capability::LlmFeature;
 use porter_capability::{Locality, Tier};
 use porter_core::consent::Usage;
 use porter_core::{AppId, AppName, DataClass, Isolation};
-use porter_dbus::inference::InferenceProxy;
 use porter_fake_servers::net::Bind;
 use porter_fake_servers::{FakeModels, ModelDef, ModelsHandle, Running, Wire};
 use porter_ids::Tokens;
@@ -31,6 +30,7 @@ use porter_infer::{
 use porter_match::LlmNeed;
 use porter_match::Need;
 use std::time::Duration;
+use steward_dbus::inference::InferenceProxy;
 
 const MAIL: &str = "org.quire.Mail";
 const KEY: &str = "sk-or-v1-NOT-USED-LOCAL-ONLY";

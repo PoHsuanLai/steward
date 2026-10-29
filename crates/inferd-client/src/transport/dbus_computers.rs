@@ -6,18 +6,18 @@
 use super::dbus::{DbusTransport, Rows, bus_error};
 use crate::error::TransportError;
 use porter_dbus::Details;
-use porter_dbus::inference::{
-    CANDIDATE_KEY_MODELS, CANDIDATE_KEY_NAME, CANDIDATE_KEY_NEEDS_APPROVAL, GUEST_KEY_NAME,
-    GUEST_KEY_SINCE, GUEST_KEY_STATE,
-};
-use porter_dbus::inference::{
-    InferenceProxy, LocalEngine, RunningModel, local_engine_from_dbus, running_from_dbus,
-};
 use porter_ids::UnixSeconds;
 use porter_tailnet::{
     Approval, CandidateModel, ComputerCandidate, GuestAnswer, GuestRow, RowState,
 };
 use porter_tailscale::NodeId;
+use steward_dbus::inference::{
+    CANDIDATE_KEY_MODELS, CANDIDATE_KEY_NAME, CANDIDATE_KEY_NEEDS_APPROVAL, GUEST_KEY_NAME,
+    GUEST_KEY_SINCE, GUEST_KEY_STATE,
+};
+use steward_dbus::inference::{
+    InferenceProxy, LocalEngine, RunningModel, local_engine_from_dbus, running_from_dbus,
+};
 
 impl DbusTransport {
     async fn inference_proxy(&self) -> Result<InferenceProxy<'static>, TransportError> {
@@ -140,9 +140,9 @@ impl DbusTransport {
 mod computers {
     use super::*;
     use crate::computers::{ComputerReach, NewComputer};
-    use porter_dbus::inference::{COMPUTER_KEY_KEY, COMPUTER_KEY_PORT, COMPUTER_KEY_SOCKET};
     use porter_dbus::zvariant::{OwnedValue, Value};
     use porter_infer::{ComputerName, PlaceId};
+    use steward_dbus::inference::{COMPUTER_KEY_KEY, COMPUTER_KEY_PORT, COMPUTER_KEY_SOCKET};
 
     impl DbusTransport {
         pub(in crate::transport) async fn send_add_tailnet_computer(

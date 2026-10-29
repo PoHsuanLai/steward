@@ -1,6 +1,6 @@
 //! Model turns on an engine of this computer: stoker's `OpenAiCompat` (`Driver<OpenAiCodec,
 //! HttpClient>`) against a [`LocalModel`]'s engine, wrapped in `Retrying` (the daemon owns retry,
-//! ARCHITECTURE section 7). A [`LocalTurn`] is a [`porter_infer::Model`] made for one request on a
+//! ARCHITECTURE section 2). A [`LocalTurn`] is a [`porter_infer::Model`] made for one request on a
 //! local model: chat (validated and repaired when the request's shape asks), tasks and
 //! embeddings, its events going to the sink it is given. A [`LocalTurns`] runs the computer-use
 //! steps of one session that is pinned to a local model; their events go down a channel of

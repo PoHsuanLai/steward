@@ -1,7 +1,7 @@
 //! inferd's interfaces and vocabulary: inference (`Inference`) and the agents' endpoints
 //! (`Agents`), with the bus names, option keys, row keys and error prefixes that go with them, and
 //! the codec of a need and a candidate. These leave porter with inferd. The AI keys, the agent
-//! launcher's calls and the AI broker's questions are accountd's (`crate::accounts`).
+//! launcher's calls and the AI broker's questions are accountd's (`porter_dbus::accounts`).
 
 mod agents;
 mod codec;
@@ -11,8 +11,8 @@ mod local_engines;
 mod names;
 mod running;
 
-use crate::Document;
-use crate::Unserved;
+use porter_dbus::Document;
+use porter_dbus::Unserved;
 
 pub use agents::{
     AGENT_ERROR_PREFIX, AgentsProxy, AgentsServed, AgentsServer, EndpointArg, MODELS_ANY,

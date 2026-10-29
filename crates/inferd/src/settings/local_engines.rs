@@ -9,9 +9,9 @@ use crate::supervise::Programs;
 use engine_probe::Place;
 use engine_spec::{ENGINES, engine};
 use model_catalog::EngineKind;
-use porter_dbus::inference::{EnginePlace, EngineState, LocalEngine};
 use porter_infer::Slot;
 use porter_router::local::EngineConfig;
+use steward_dbus::inference::{EnginePlace, EngineState, LocalEngine};
 
 /// The engines of one daemon.
 #[derive(Debug, Clone, Default)]

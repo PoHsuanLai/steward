@@ -226,7 +226,7 @@ async fn the_shell_may_list_the_places_and_ask_for_no_model() {
 #[tokio::test(flavor = "multi_thread")]
 async fn an_account_that_appears_makes_inferd_say_engines_changed() {
     use porter_dbus::BusStream;
-    use porter_dbus::inference::InferenceProxy;
+    use steward_dbus::inference::InferenceProxy;
     let (world, _lab) = world("news", Role::Settings, "org.quire.Settings").await;
     let proxy = InferenceProxy::new(&world.client).await.expect("proxy");
     let mut changed = proxy.receive_engines_changed().await.expect("stream");
@@ -258,7 +258,6 @@ mod routing {
     use inferd_client::InferSession;
     use porter_capability::LlmFeature;
     use porter_core::consent::Usage;
-    use porter_dbus::inference::InferenceProxy;
     use porter_ids::Tokens;
     use porter_infer::{
         ChatMessage, ChatRequest, ClientFrame, InferEvent, InferRequest, LocalOnly, MessagePart,
@@ -269,6 +268,7 @@ mod routing {
     use porter_router::router::placed::Allowed;
     use porter_router::session::SessionSpec;
     use std::collections::BTreeMap;
+    use steward_dbus::inference::InferenceProxy;
 
     const COMPANION: &str = "org.quire.Companion";
 
@@ -526,7 +526,7 @@ mod routing {
     async fn a_places_option_that_is_not_what_the_interface_says_is_invalid_args() {
         let (world, _lab) = placed_world("invalid", Role::Placer, COMPANION).await;
         let proxy = InferenceProxy::new(&world.client).await.expect("proxy");
-        let need = porter_dbus::inference::need_to_dbus(&llm());
+        let need = steward_dbus::inference::need_to_dbus(&llm());
         let text = |value: &str| {
             porter_dbus::zvariant::OwnedValue::try_from(porter_dbus::zvariant::Value::from(
                 value.to_owned(),
@@ -595,11 +595,11 @@ mod refusals {
     use super::*;
     use hosting::rig::World;
     use porter_capability::{LlmFeature, Modality};
-    use porter_dbus::inference::{InferenceProxy, PLACE_ERROR_PREFIX, place_refusal_of};
     use porter_ids::Tokens;
     use porter_infer::{LocalOnly, NoPlaceReason, OpenOptions, PlaceId, Policy};
     use porter_match::Need;
     use porter_match::{DimsNeed, EmbedNeed, LlmNeed};
+    use steward_dbus::inference::{InferenceProxy, PLACE_ERROR_PREFIX, place_refusal_of};
 
     const COMPANION: &str = "org.quire.Companion";
 
@@ -808,7 +808,7 @@ mod refusals {
             Ok(value) => [("places".to_owned(), value)].into(),
             Err(e) => panic!("{e}"),
         };
-        let need = porter_dbus::inference::need_to_dbus(&llm());
+        let need = steward_dbus::inference::need_to_dbus(&llm());
         let error = proxy
             .availability(&need, "public", &options)
             .await
@@ -877,8 +877,6 @@ mod computers {
     use hosting::bus::within;
     use inferd::peers::Caller;
     use inferd_client::InferSession;
-    use porter_dbus::inference::COMPUTER_ERROR_PREFIX;
-    use porter_dbus::inference::InferenceProxy;
     use porter_dbus::zvariant::{OwnedValue, Value};
     use porter_dbus::{BusStream, Details};
     use porter_infer::{
@@ -886,6 +884,8 @@ mod computers {
         OpenOptions, PlaceId, Policy, Role as ChatRole,
     };
     use std::path::Path;
+    use steward_dbus::inference::COMPUTER_ERROR_PREFIX;
+    use steward_dbus::inference::InferenceProxy;
 
     const KEY: &str = "sk-lab-S3CRET-0123456789";
     const COMPANION: &str = "org.quire.Companion";

@@ -3,7 +3,7 @@
 //! `[probe]` table of `inferd.toml`, these defaults); the host is always `127.0.0.1`, the only
 //! plain-HTTP address porter allows.
 //!
-//! What a port answers is read by `porter_discover::probe_ports` (Ollama's `/api/tags` and
+//! What a port answers is read by `inferd_probe::probe_ports` (Ollama's `/api/tags` and
 //! `/api/show`, llama.cpp's `/props`, an OpenAI-compatible `/v1/models`), which gives each model
 //! as a `Discovered` claim under a model id. A chat request needs the name the runtime itself
 //! uses (`llama3.2:3b`, where the id is `llama3.2-3b`), so the runtime's list is read once more
@@ -15,10 +15,10 @@
 pub mod entry;
 pub mod names;
 
+use inferd_probe::probe_ports;
 use names::{Listing, pair};
 use porter_capability::ModelId;
 use porter_capability::{Claim, Offer, Subject};
-use porter_discover::probe_ports;
 use porter_http::Http;
 use porter_provider::Port;
 use porter_router::local::LocalModel;

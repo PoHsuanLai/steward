@@ -15,11 +15,11 @@ use inferd::settings::AgentEndpoint;
 use inferd::settings::SpendLine;
 use model_provider::Money;
 use porter_dbus::Details;
-use porter_dbus::inference::AgentsProxy;
 use porter_ids::TurnCount;
 use porter_infer::{ChargeTotal, Period, Policy, SpendScope};
 use rust_decimal::Decimal;
 use serde_json::json;
+use steward_dbus::inference::AgentsProxy;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
 

@@ -6,10 +6,10 @@ use crate::hosting::bus::within;
 use inferd::attached::{Attached, Place, Reach};
 use porter_capability::ModelId;
 use porter_dbus::Details;
-use porter_dbus::inference::{
+use std::time::{Duration, SystemTime};
+use steward_dbus::inference::{
     InferenceProxy, RunState, RunningModel, RunningRowError, running_from_dbus,
 };
-use std::time::{Duration, SystemTime};
 use zbus::export::futures_core::Stream;
 
 const CHAT: &str = "local/tiny-chat";

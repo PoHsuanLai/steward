@@ -21,11 +21,11 @@ use ds_settings::schema::{
     HostName, KeyKind, KeyPath, KeySpec, Label, Page, Section, UnavailableReason, WordLabels,
 };
 use porter_capability::{Locality, Tier};
-use porter_dbus::inference::INFERENCE_SETTINGS_PATH;
 use porter_infer::{Chooser, ModelRef, Slot, tier_label};
 use porter_router::local::LocalModel;
 use porter_router::router::slots_of;
 use std::collections::BTreeMap;
+use steward_dbus::inference::INFERENCE_SETTINGS_PATH;
 
 /// The picker value that is Automatic.
 const AUTO: &str = "auto";
