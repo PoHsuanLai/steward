@@ -810,6 +810,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "fake-secret-service"
+version = "0.1.0"
+source = "git+https://github.com/PoHsuanLai/porter?rev=c718d2036daad7e052e1d89f1fe0ca4679168427#c718d2036daad7e052e1d89f1fe0ca4679168427"
+dependencies = [
+ "serde",
+ "thiserror",
+ "zbus",
+]
+
+[[package]]
 name = "fast_image_resize"
 version = "6.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2166,6 +2176,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "porter-rig"
+version = "0.1.0"
+source = "git+https://github.com/PoHsuanLai/porter?rev=c718d2036daad7e052e1d89f1fe0ca4679168427#c718d2036daad7e052e1d89f1fe0ca4679168427"
+dependencies = [
+ "clap",
+ "fake-secret-service",
+ "porter-callers",
+ "porter-capability",
+ "porter-client",
+ "porter-client-dbus",
+ "porter-core",
+ "porter-dbus",
+ "porter-fake",
+ "porter-fake-servers",
+ "porter-ids",
+ "porter-wire",
+ "serde",
+ "serde_json",
+ "test-kit",
+ "tokio",
+ "zbus",
+]
+
+[[package]]
 name = "porter-router"
 version = "0.1.0"
 dependencies = [
@@ -3141,6 +3175,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "steward-rig"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "inferd-client",
+ "porter-capability",
+ "porter-core",
+ "porter-ids",
+ "porter-infer",
+ "porter-match",
+ "porter-rig",
+ "serde",
+ "serde_json",
+ "tokio",
+ "zbus",
+]
+
+[[package]]
 name = "strsim"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3201,7 +3253,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.4.3",
+ "getrandom 0.3.4",
  "once_cell",
  "rustix",
  "windows-sys 0.61.2",

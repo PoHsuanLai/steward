@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Added
+
+- `steward-rig` (test tooling, never installed): `steward-rig-client open`, which porter deleted
+  with inferd (`porter-rig-client open`), with the same arguments and JSON lines; desktop's
+  accounts-consent scenario uses it to spend an Allow Once permit and see `needs_grant` after.
+
 ### Cut from porter e9e7cdcd
 
 - steward is porter's AI half, cut with its history (`git filter-repo`) from porter `e9e7cdcd`:

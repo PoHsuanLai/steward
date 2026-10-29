@@ -10,6 +10,7 @@ members = [
   "crates/porter-turns",
   "crates/porter-tailnet",
   "crates/steward-dbus",
+  "crates/steward-rig",
 ]
 
 [workspace.package]
@@ -46,6 +47,7 @@ porter-dbus = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036da
 porter-dbus-macros = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
 porter-fake = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
 porter-fake-servers = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
+porter-rig = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
 porter-fs = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
 porter-http = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }
 porter-http-reqwest = { git = "https://github.com/PoHsuanLai/porter", rev = "c718d2036daad7e052e1d89f1fe0ca4679168427" }

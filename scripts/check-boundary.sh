@@ -130,6 +130,7 @@ EDGES=(
   "porter-tailnet: porter-fs porter-ids porter-tailscale"
   "porter-turns: cua-action cua-parse cua-session cua-vendors engine-supervisor model-extract model-http model-openai-compat model-provider porter-bridge porter-capability porter-core porter-ids porter-infer porter-match porter-router vision-prep"
   "steward-dbus: porter-core porter-dbus porter-dbus-macros porter-ids porter-match porter-wire"
+  "steward-rig: inferd-client porter-capability porter-core porter-ids porter-infer porter-match porter-rig"
 )
 for edge in "${EDGES[@]}"; do
   crate="${edge%%:*}"
